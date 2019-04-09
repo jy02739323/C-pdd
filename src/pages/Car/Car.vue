@@ -1,5 +1,5 @@
 <template>
-  <div class="chat">购物车11</div>
+  <div class="chat">购物车</div>
 </template>
 
 <script>
