@@ -1,21 +1,24 @@
-# lk_pdd
+## C-pdd
 
-> A Vue.js project
 
-## Build Setup
+此C-pdd拼多多项目是一个使用 vue2.0,vue-router,vuex,各种loader插件 和 webpack 打包的 Html5 web 应用, 使用 ES6 进行编写,并使用了缓存以及懒加载等技术. 后端使用express自己写的API.
 
-``` bash
-# install dependencies
-npm install
 
-# serve with hot reload at localhost:8080
-npm run dev
+##  安装（git）
+克隆项目地址并下载
 
-# build for production with minification
-npm run build
 
-# build for production and view the bundle analyzer report
-npm run build --report
+```
+    git@github.com:jy02739323/vue-news.git
+```
+建立 通过```npm```安装本地服务第三方模块,需要安装[nodejs](https://nodejs.org/)环境
+
+```
+    npm install
 ```
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+```
+    npm run dev
+```
+浏览器打开方式（[http://localhost:8081）
+
