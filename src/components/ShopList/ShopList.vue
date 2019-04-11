@@ -5,7 +5,7 @@
     <div class="item-bottom">
       <span class="item-price">¥{{rec.price / 100}}</span>
       <span class="item-sales">{{rec.sales_tip}}</span>
-      <button class="item-btn">找相关</button>
+      <button class="item-btn" @click="clickCellBtn(rec)">找相关</button>
     </div>
   </a>
 </template>
@@ -14,7 +14,11 @@
   export default {
     name: "ShopList",
     props: {
-      rec: Object
+      rec: Object,
+      clickCellBtn: {
+        type: Function,
+        default: ()=>{}
+      }
     }
   }
 </script>

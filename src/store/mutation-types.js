@@ -5,3 +5,7 @@ export const RECOMMEND = 'recommend';//推荐商品列表
 export const SEARCH_GOODS = 'search_goods';//搜索商品列表
 export const USER_INFO = 'user_info'; // 同步用户信息
 export const RESET_USER_INFO = 'reset_user_info'; // 清空用户信息
+export const CART_GOODS_LIST = 'cart_goods_list';//购物车信息
+export const ADD_GOODS_COUNT = 'add_goods_count';  // 增加 购物车商品的数量
+export const REDUCE_GOODS_COUNT = 'reduce_goods_count';  // 减少 购物车商品的数量
+export const SELECTED_ALL_GOODS = 'selected_all_goods';  // 是否全选

@@ -5,7 +5,8 @@ import {
   getRecommend,
   getSearchGoods,
   getUserInfo,
-  getLogout
+  getLogout,
+  getCartsGoods,
 } from '../api'
 
 import {
@@ -15,8 +16,13 @@ import {
   RECOMMEND,
   SEARCH_GOODS,
   USER_INFO,
-  RESET_USER_INFO
+  RESET_USER_INFO,
+  CART_GOODS_LIST,
+  ADD_GOODS_COUNT,
+  REDUCE_GOODS_COUNT,
+  SELECTED_ALL_GOODS
 } from './mutation-types'
+
 
 
 
@@ -68,5 +74,27 @@ export default {
     if(result.success_code === 200){
       commit(RESET_USER_INFO);
     }
+  },
+
+  //请求购物车数据
+  async reqCartsGoods({commit}) {
+    const result = await getCartsGoods();
+    if(result.success_code === 200){
+      commit(CART_GOODS_LIST, {cartgoods: result.message})
+    }
+  },
+
+  //购物车单个商品的增加和减少
+  updateGoodsCount({commit},{goods, isAdd}){
+    if(isAdd){
+      commit(ADD_GOODS_COUNT, {goods});
+    } else {
+      commit(REDUCE_GOODS_COUNT, {goods})
+    }
+  },
+
+  //全选和取消全选
+  selectedAll({commit},{isSelected}) {
+    commit (SELECTED_ALL_GOODS, {isSelected});
   }
 }

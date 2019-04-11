@@ -1,13 +1,15 @@
 <template>
   <div class="recommend_container">
-    <ul class="recommend_ul"  v-if="recommend.length > 0">
+    <ul class="recommend_ul"  v-if="userInfo.id && recommend.length > 0">
       <shop-list
         tag="li"
         v-for="(rec, index) in recommend"
         :rec = rec
         :key="index"
+        :clickCellBtn="dealWithCellBtnClick"
       />
     </ul>
+    <select-login v-else/>
   </div>
 </template>
 
@@ -16,6 +18,8 @@
   import ShopList from './../../components/ShopList/ShopList'
   import BScroll from 'better-scroll';
   import {Indicator} from 'mint-ui';
+  import {addGoodsToCart} from './../../api/index';
+  import SelectLogin from './../Login/SelectLogin';
 
   export default {
     name: "Recommend",
@@ -34,10 +38,11 @@
       });
     },
     computed:{
-      ...mapState(['recommend'])
+      ...mapState(['recommend', 'userInfo'])
     },
     components: {
-      ShopList
+      ShopList,
+      SelectLogin
     },
     watch: {
       recommend() {
@@ -50,7 +55,6 @@
       }
     },
     methods:{
-
       _initBScroll() {
         // 1.1 初始化
         this.listScroll = new BScroll('.recommend_container', {
@@ -85,6 +89,12 @@
             this.listScroll.refresh();
           });
         })
+      },
+      //监听商品点击
+      async dealWithCellBtnClick(goods) {
+        //发送请求
+        let result = await addGoodsToCart(this.userInfo.id,goods.goods_id,goods.goods_name, goods.thumb_url, goods.price);
+        console.log(result);
       }
     }
   }
